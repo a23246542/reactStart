@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import Counter from './Counter'
+import TodoList from './todolist';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <Counter/>,
+  // 一定要大寫
+  <TodoList/>,
   document.getElementById('root')
 );
 
