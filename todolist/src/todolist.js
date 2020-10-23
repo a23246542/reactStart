@@ -1,4 +1,5 @@
 import React, {Fragment} from 'react';
+import TodoItem from './todoItem';
 
 class TodoList extends React.Component {
   constructor(props){ // 最優先執行函數
@@ -19,25 +20,35 @@ class TodoList extends React.Component {
           {
             //用單行註釋要單獨放在一行裡面
           }
-          <input 
+          <input
             type="text" value={this.state.inputValue}
             onChange={this.handleInputChange.bind(this)}
-            ></input>
+          >
+          </input>
           <button
             onClick={this.handleBtnClick.bind(this)}
-            >提交</button>
+          >
+            提交
+          </button>
         </div>
         <ul>
           {
             this.state.list.map((item, index) =>{
               // return <li key={index}>{item}</li>
               return ( //@@老師說代碼做個格式化 加上()差在哪?
-                <li  
+                // <li  
+                //   key={index}
+                //   dangerouslySetInnerHTML = {{__html:item}} //%%兩個底線
+                //   onClick = { this.handleDelItem.bind(this, index) }
+                // >
+                //     {/* {item} */}
+                // </li>
+                <TodoItem 
                   key={index}
-                  dangerouslySetInnerHTML = {{__html:item}} //%%兩個底線
-                >
-                    {/* {item} */}
-                </li>
+                  content={item}
+                  index={index}
+                  delItem = {this.handleDelItem.bind(this)}
+                ></TodoItem>
               )
             })
           }
@@ -63,6 +74,14 @@ class TodoList extends React.Component {
     this.setState({
       list:[...this.state.list,this.state.inputValue],
       inputValue:''
+    })
+  }
+
+  handleDelItem(index) {
+    const list = [...this.state.list];
+    list.splice(index,1);
+    this.setState({
+      list:list,
     })
   }
 
