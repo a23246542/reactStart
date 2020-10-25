@@ -123,7 +123,8 @@ class TodoList extends React.Component {
     // })
 
     this.setState((prevState) => {
-      const list = [...prevState.list,prevState.inputValue];
+      // const list = [...prevState.list];//%%難怪刪掉後陣列還是多出個空白字串
+      const list = [...prevState.list];
       list.splice(index,1);
       // return({ // @@好像也可以
       //   list //es6物件缩写

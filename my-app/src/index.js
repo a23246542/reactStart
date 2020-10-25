@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Counter from './Counter'
+// import Counter from './Counter';
+// import Input from './Input';
+import All from './all';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <Counter/>,
+  <All/>,
   document.getElementById('root')
 );
 
