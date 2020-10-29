@@ -9,6 +9,7 @@ import ContextButton from './contextApi/contextOpen';
 import UseContextButton from './contextApi/useContextOpen';
 import TodoList from './hooksTodo/TodoList';
 import FilterableProductTable from './react思考/FilterableProductTable';
+import PopApp from './contextPop/PopApp';
 
 const data = [
   {category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football'},
@@ -22,7 +23,7 @@ const data = [
 class All extends React.Component {
   render() {
     return (
-      <div>
+      <div style={{padding:'0 100px'}}>
         <Counter/>
         <br/>
         <Input/>
@@ -42,6 +43,8 @@ class All extends React.Component {
         <TodoList/>
         <br/> 
         <FilterableProductTable products = {data} />
+        <br/>
+        <PopApp/>
       </div>
     )
   }
