@@ -2,7 +2,7 @@ import React from 'react';
 
 class TodoItem extends React.Component {
   constructor(props) {
-    super(props);
+    super(props);//@@ 話說child沒有props也是ok啊
     // %%子组件里面装父组件的方法 但子组件方法也要记得绑this
     this.handleClick = this.handleClick.bind(this);
   }
