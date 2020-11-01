@@ -1,11 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TodoList from './todolist';
+import TodoListUi from './reduxTodo/TodoListUi';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   // 一定要大寫
-  <TodoList/>,
+  <div style={{padding:'30px'}}>
+    <TodoList/>
+    <br/>
+    <TodoListUi/>      
+  </div> 
+  ,
   document.getElementById('root')
 );
 
