@@ -2,6 +2,8 @@ import React,{useState}from 'react';
 import 'antd/dist/antd.css';
 import { Input, Button, List } from 'antd';
 import store  from './store';
+// import {CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM} from './store/actionTypes';
+import {getInputChangeAction, getAddItemAction, getDeleteItemAction} from './store/actionCreator';
 
 // const data = [
 //   'Racing car sprays burning fuel into crowd.',
@@ -21,17 +23,35 @@ const TodoListUi = () => {
   const [list, setList] = useState(store.getState().list);
   // store.subscribe(handleStoreChange);//@@ReferenceError: Cannot access 'handleStoreChange' before initialization
 
+    
   const hanldeInputChange = (e) => { //存到store
-    // console.log(e.target.value);
-    const action = {
-      type:'change_input_value',
-      value:e.target.value
-    }
-    store.dispatch(action);
+    // const action = {
+    //   type:CHANGE_INPUT_VALUE,
+    //   value:e.target.value
+    // }
+
+    store.dispatch(getInputChangeAction(e.target.value));
   }
+  
+  const handleBtnClick = () => {
+    // const action = {
+    //   type:ADD_TODO_ITEM,
+    // }
+    store.dispatch(getAddItemAction());
+  }
+  
+  const handleItemDelete = (index) => {
+    // const action = {
+    //   type:DELETE_TODO_ITEM,
+    //   index
+    // }
+    store.dispatch(getDeleteItemAction(index));
+  }
+  
 
   const handleStoreChange = () => { //拿回store資料 更新dom
     setInput(store.getState().inputValue);
+    setList(store.getState().list);
   }
   store.subscribe(handleStoreChange);//!!!!!%%%放在後面才吃得到
   return (
@@ -44,15 +64,19 @@ const TodoListUi = () => {
           onChange={hanldeInputChange}
           style={{width: '300px',marginRight: '10px'}}
         />
-        <Button type="primary">提交</Button>
+        <Button type="primary"
+          onClick={handleBtnClick}
+        >提交</Button>
       </div>
-      <List  style={{width:'300px',marginTop: '30px'}}
+      <List style={{width:'300px',marginTop: '30px'}}
         // header={<div>Header</div>}
         // footer={<div>Footer</div>}
         bordered
         dataSource={list}
-        renderItem={item => (
-          <List.Item>
+        renderItem={ (item, index) => ( //!!antd的設計方法 @@index呼叫不到
+          <List.Item
+            onClick={(index)=>{handleItemDelete(index); console.log(index);}}
+          >
             {item}
           </List.Item>
         )}
