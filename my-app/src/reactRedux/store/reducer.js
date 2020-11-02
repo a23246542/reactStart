@@ -1,6 +1,6 @@
 
 const defaultValue = {
-  inputValue: '',
+  inputValue: '11',
   list: [],
 }
 
