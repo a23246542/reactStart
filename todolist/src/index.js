@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TodoList from './todolist';
 import TodoListUi from './reduxTodo/TodoListUi';
+import TodoListUi2 from './reduxTodoUI/todoList';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
@@ -9,7 +10,9 @@ ReactDOM.render(
   <div style={{padding:'30px'}}>
     <TodoList/>
     <br/>
-    <TodoListUi/>      
+    <TodoListUi/>
+    <br/>
+    <TodoListUi2/>      
   </div> 
   ,
   document.getElementById('root')
