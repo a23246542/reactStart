@@ -15,7 +15,6 @@ const TodoList = () => {
   const [list, setList] = useState(store.getState().list);
   // store.subscribe(handleStoreChange);//@@ReferenceError: Cannot access 'handleStoreChange' before initialization
 
-
     
   const hanldeInputChange = (e) => { //存到store
     store.dispatch(getInputChangeAction(e.target.value));

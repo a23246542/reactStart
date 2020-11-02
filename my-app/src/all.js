@@ -11,6 +11,8 @@ import TodoList from './hooksTodo/TodoList';
 import FilterableProductTable from './react思考/FilterableProductTable';
 import PopApp from './contextPop/PopApp';
 
+import ReduxTodo from './reactRedux/index';
+
 const data = [
   {category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football'},
   {category: 'Sporting Goods', price: '$9.99', stocked: true, name: 'Baseball'},
@@ -45,6 +47,9 @@ class All extends React.Component {
         <FilterableProductTable products = {data} />
         <br/>
         <PopApp/>
+        <br/>
+        <h3>react-redux</h3>
+        <ReduxTodo/>
       </div>
     )
   }
