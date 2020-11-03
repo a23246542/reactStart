@@ -1,8 +1,24 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import {connect, useSelector, useDispatch} from 'react-redux';
+import {getInputChangeAction} from './store/actionCreator';
 
 const TodoList = (props) => {
-  const {inputValue, changeInputValue} = props; //可以即時更新
+
+  // const {inputValue, changeInputValue} = props; //可以即時更新
+
+  // const inputValue = useSelector((state) => state.inputValue);
+  const inputValue = useSelector((state) => {
+    console.log(state);//@@為何執行兩次
+    return state.inputValue
+  });
+
+  const dispatch = useDispatch();
+
+  const changeInputValue = (e) => {
+    dispatch(getInputChangeAction(e.target.value));
+  }
+  console.log('render?');
+  
   return (
     <div>
       <div>
@@ -19,16 +35,15 @@ const TodoList = (props) => {
   );
 }
 
-const mapStateToProps = (state) =>({
-  inputValue:state.inputValue
-})
+// const mapStateToProps = (state) =>({ //回傳給函式的props物件
+//   inputValue:state.inputValue
+// })
 
-const mapDispatchToProps = (dispatch) =>({
-  changeInputValue(e){
-    console.log(e.target.value);
-    // dispatch()
-  }
-})
+// const mapDispatchToProps = (dispatch) =>({ //回傳給函式的props物件
+//   changeInputValue(e){
+//     dispatch(getInputChangeAction(e.target.value))
+//   }
+// })
 
-// export default TodoList;
-export default connect(mapStateToProps,mapDispatchToProps)(TodoList);//!!這邊倒出connect變成容器組件 todoList變成包裹的ui組件
+// export default connect(mapStateToProps,mapDispatchToProps )(TodoList);//!!這邊倒出connect變成容器組件 todoList變成包裹的ui組件
+export default TodoList;

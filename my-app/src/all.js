@@ -25,7 +25,7 @@ const data = [
 class All extends React.Component {
   render() {
     return (
-      <div style={{padding:'0 100px'}}>
+      <div style={{padding:'50px 100px'}}>
         <Counter/>
         <br/>
         <Input/>
