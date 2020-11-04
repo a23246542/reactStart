@@ -10,6 +10,7 @@ import UseContextButton from './contextApi/useContextOpen';
 import TodoList from './hooksTodo/TodoList';
 import FilterableProductTable from './react思考/FilterableProductTable';
 import PopApp from './contextPop/PopApp';
+import Mock from './mockPage';
 
 import ReduxTodo from './reactRedux/index';
 
@@ -50,6 +51,8 @@ class All extends React.Component {
         <br/>
         <h3>react-redux</h3>
         <ReduxTodo/>
+        <br/>
+        <Mock/>
       </div>
     )
   }
